@@ -124,3 +124,23 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.contact-section {
+    font-family: Arial, sans-serif;
+    color: #003399;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .contact-section p {
+    margin: 5px 0;
+  }
+  
+  .contact-section a {
+    color: #003399;
+    text-decoration: none;
+  }
+  
+  .contact-section a:hover {
+    text-decoration: underline;
+  }
