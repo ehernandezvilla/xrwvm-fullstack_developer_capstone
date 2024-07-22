@@ -28,7 +28,9 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('type', models.CharField(
                     choices=[('SEDAN', 'Sedan'), ('SUV', 'SUV'), ('WAGON', 'Wagon')],
-                    default='SUV', max_length=10)),
+                    default='SUV',
+                    max_length=10
+                )),
                 ('year', models.IntegerField(
                     default=2023,
                     validators=[
@@ -37,7 +39,8 @@ class Migration(migrations.Migration):
                     ]
                 )),
                 ('car_make', models.ForeignKey(
-                    on_delete=django.db.models.deletion.CASCADE, to='djangoapp.carmake')),
+                    on_delete=django.db.models.deletion.CASCADE, to='djangoapp.carmake'
+                )),
             ],
         ),
     ]
