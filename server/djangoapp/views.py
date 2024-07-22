@@ -10,6 +10,9 @@ from .restapis import get_request, analyze_review_sentiments, post_review
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+def index(request):
+    return render(request, 'base.html')
+
 def initiate():
     # Example data to populate the database
     car_makes = [
@@ -48,7 +51,6 @@ def get_cars(request):
     return JsonResponse({"CarModels": cars})
 
 # Dealerships view
-# Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
 def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
@@ -68,20 +70,17 @@ def get_dealer_details(request, dealer_id):
 
 # Get dealers reviews
 def get_dealer_reviews(request, dealer_id):
-    # if dealer id has been provided
     if(dealer_id):
         endpoint = "/fetchReviews/dealer/"+str(dealer_id)
         reviews = get_request(endpoint)
         for review_detail in reviews:
             response = analyze_review_sentiments(review_detail['review'])
-            print(response)
             review_detail['sentiment'] = response['sentiment']
         return JsonResponse({"status":200,"reviews":reviews})
     else:
         return JsonResponse({"status":400,"message":"Bad Request"})
 
 # Add review
-# Post review 
 def add_review(request):
     if(request.user.is_anonymous == False):
         data = json.loads(request.body)
