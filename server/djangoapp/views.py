@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 import logging
@@ -9,7 +8,6 @@ from .restapis import get_request, analyze_review_sentiments, post_review
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
-
 
 def initiate():
     car_makes = [
@@ -35,7 +33,6 @@ def initiate():
             year=car_model['year']
         )
 
-
 def get_cars(request):
     count = CarMake.objects.filter().count()
     if count == 0:
@@ -44,12 +41,10 @@ def get_cars(request):
     cars = [{"CarModel": car_model.name, "CarMake": car_model.car_make.name} for car_model in car_models]
     return JsonResponse({"CarModels": cars})
 
-
 def get_dealerships(request, state="All"):
     endpoint = "/fetchDealers" if state == "All" else f"/fetchDealers/{state}"
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
-
 
 def get_dealer_details(request, dealer_id):
     if dealer_id:
@@ -57,7 +52,6 @@ def get_dealer_details(request, dealer_id):
         dealership = get_request(endpoint)
         return JsonResponse({"status": 200, "dealer": dealership})
     return JsonResponse({"status": 400, "message": "Bad Request"})
-
 
 def get_dealer_reviews(request, dealer_id):
     if dealer_id:
@@ -69,7 +63,6 @@ def get_dealer_reviews(request, dealer_id):
         return JsonResponse({"status": 200, "reviews": reviews})
     return JsonResponse({"status": 400, "message": "Bad Request"})
 
-
 @csrf_exempt
 def add_review(request):
     if not request.user.is_anonymous:
@@ -77,10 +70,9 @@ def add_review(request):
         try:
             post_review(data)
             return JsonResponse({"status": 200})
-        except Exception as err:
-            return JsonResponse({"status": 401, "message": f"Error in posting review: {err}"})
+        except Exception as e:
+            return JsonResponse({"status": 401, "message": f"Error in posting review: {e}"})
     return JsonResponse({"status": 403, "message": "Unauthorized"})
-
 
 @csrf_exempt
 def login_user(request):
@@ -94,10 +86,8 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
-
 def logout_request(request):
     return JsonResponse({"userName": ""})
-
 
 @csrf_exempt
 def registration(request):
@@ -111,8 +101,8 @@ def registration(request):
     try:
         User.objects.get(username=username)
         username_exist = True
-    except Exception as err:
-        logger.debug(f"{username} is new user: {err}")
+    except Exception as e:
+        logger.debug(f"{username} is new user: {e}")
     if not username_exist:
         user = User.objects.create_user(
             username=username,

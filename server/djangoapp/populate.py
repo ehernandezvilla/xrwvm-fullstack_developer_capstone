@@ -1,6 +1,5 @@
 from djangoapp.models import CarMake, CarModel
 
-
 def populate_db():
     car_makes = [
         {'name': 'Toyota', 'description': 'Japanese car manufacturer'},
