@@ -146,3 +146,4 @@ def registration(request):
             "status": "Authenticated"
         })
     return JsonResponse({"userName": username, "error": "Already Registered"})
+
