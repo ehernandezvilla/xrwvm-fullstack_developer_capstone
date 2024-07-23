@@ -19,13 +19,16 @@ def initiate():
 
     car_models = [
         {
-            'name': 'Camry', 'car_make': 'Toyota', 'type': 'SEDAN', 'year': 2023
+            'name': 'Camry', 'car_make': 'Toyota', 'type': 'SEDAN',
+            'year': 2023
         },
         {
-            'name': 'Corolla', 'car_make': 'Toyota', 'type': 'SEDAN', 'year': 2022
+            'name': 'Corolla', 'car_make': 'Toyota', 'type': 'SEDAN',
+            'year': 2022
         },
         {
-            'name': 'F-150', 'car_make': 'Ford', 'type': 'SUV', 'year': 2021
+            'name': 'F-150', 'car_make': 'Ford', 'type': 'SUV',
+            'year': 2021
         },
     ]
 
@@ -146,4 +149,3 @@ def registration(request):
             "status": "Authenticated"
         })
     return JsonResponse({"userName": username, "error": "Already Registered"})
-
