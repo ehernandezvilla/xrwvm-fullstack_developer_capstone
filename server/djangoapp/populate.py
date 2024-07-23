@@ -1,5 +1,6 @@
 from djangoapp.models import CarMake, CarModel
 
+
 def populate_db():
     car_makes = [
         {'name': 'Toyota', 'description': 'Japanese car manufacturer'},
@@ -27,7 +28,10 @@ def populate_db():
     ]
 
     for car_make in car_makes:
-        CarMake.objects.create(name=car_make['name'], description=car_make['description'])
+        CarMake.objects.create(
+            name=car_make['name'], 
+            description=car_make['description']
+        )
 
     for car_model in car_models:
         car_make = CarMake.objects.get(name=car_model['car_make'])
