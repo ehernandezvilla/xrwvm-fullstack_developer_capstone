@@ -94,7 +94,10 @@ def add_review(request):
             post_review(data)
             return JsonResponse({"status": 200})
         except Exception as e:
-            return JsonResponse({"status": 401, "message": f"Error in posting review: {e}"})
+            return JsonResponse({
+                "status": 401,
+                "message": f"Error in posting review: {e}"
+            })
     return JsonResponse({"status": 403, "message": "Unauthorized"})
 
 
@@ -138,5 +141,8 @@ def registration(request):
             email=email
         )
         login(request, user)
-        return JsonResponse({"userName": username, "status": "Authenticated"})
+        return JsonResponse({
+            "userName": username,
+            "status": "Authenticated"
+        })
     return JsonResponse({"userName": username, "error": "Already Registered"})
