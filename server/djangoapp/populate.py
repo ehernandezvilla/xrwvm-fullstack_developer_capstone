@@ -14,22 +14,33 @@ def populate_db():
     ]
 
     car_models = [
-        {'name': 'Camry', 'car_make': 'Toyota', 'type': 'SEDAN', 'year': 2023},
-        {'name': 'Corolla', 'car_make': 'Toyota', 'type': 'SEDAN', 'year': 2022},
-        {'name': 'F-150', 'car_make': 'Ford', 'type': 'SUV', 'year': 2021},
-        {'name': 'Accord', 'car_make': 'Honda', 'type': 'SEDAN', 'year': 2023},
-        {'name': 'Civic', 'car_make': 'Honda', 'type': 'SEDAN', 'year': 2022},
-        {'name': 'X5', 'car_make': 'BMW', 'type': 'SUV', 'year': 2021},
-        {'name': 'Q5', 'car_make': 'Audi', 'type': 'SUV', 'year': 2023},
-        {'name': 'A4', 'car_make': 'Audi', 'type': 'SEDAN', 'year': 2022},
-        {'name': 'E-Class', 'car_make': 'Mercedes', 'type': 'SEDAN', 'year': 2021},
-        {'name': 'Malibu', 'car_make': 'Chevrolet', 'type': 'SEDAN', 'year': 2023},
-        {'name': 'Altima', 'car_make': 'Nissan', 'type': 'SEDAN', 'year': 2022},
+        {'name': 'Camry', 'car_make': 'Toyota', 'type': 'SEDAN',
+         'year': 2023},
+        {'name': 'Corolla', 'car_make': 'Toyota', 'type': 'SEDAN',
+         'year': 2022},
+        {'name': 'F-150', 'car_make': 'Ford', 'type': 'SUV',
+         'year': 2021},
+        {'name': 'Accord', 'car_make': 'Honda', 'type': 'SEDAN',
+         'year': 2023},
+        {'name': 'Civic', 'car_make': 'Honda', 'type': 'SEDAN',
+         'year': 2022},
+        {'name': 'X5', 'car_make': 'BMW', 'type': 'SUV',
+         'year': 2021},
+        {'name': 'Q5', 'car_make': 'Audi', 'type': 'SUV',
+         'year': 2023},
+        {'name': 'A4', 'car_make': 'Audi', 'type': 'SEDAN',
+         'year': 2022},
+        {'name': 'E-Class', 'car_make': 'Mercedes', 'type': 'SEDAN',
+         'year': 2021},
+        {'name': 'Malibu', 'car_make': 'Chevrolet', 'type': 'SEDAN',
+         'year': 2023},
+        {'name': 'Altima', 'car_make': 'Nissan', 'type': 'SEDAN',
+         'year': 2022},
     ]
 
     for car_make in car_makes:
         CarMake.objects.create(
-            name=car_make['name'], 
+            name=car_make['name'],
             description=car_make['description']
         )
 
